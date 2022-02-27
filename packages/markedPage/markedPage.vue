@@ -1,8 +1,8 @@
 <!--
  * @Date: 2022-01-10 14:43:36
  * @LastEditors: CZH
- * @LastEditTime: 2022-02-27 09:41:59
- * @FilePath: /vue3MarkedComponent/src/components/markedPage.vue
+ * @LastEditTime: 2022-02-27 17:06:24
+ * @FilePath: /vue3MarkedComponent/packages/components/markedPage.vue
 -->
 <template>
   <div class="post">
@@ -69,7 +69,7 @@ function getChildren(arr, level) {
   return back;
 }
 export default {
-  name: "markDownViewer",
+  name: "markedPage",
   components: {},
   props: {
     markdown: {
