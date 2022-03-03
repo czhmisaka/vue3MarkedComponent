@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-02-27 17:06:07
  * @LastEditors: CZH
- * @LastEditTime: 2022-02-27 17:55:34
+ * @LastEditTime: 2022-02-27 19:02:13
  * @FilePath: /vue3MarkedComponent/packages/index.ts
  */
 
@@ -21,6 +21,7 @@ const install = function (Vue:any) {
     Vue.component(item.name,item)
   })
 }
+
 export default {
   install,
   markedPage

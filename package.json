@@ -2,7 +2,7 @@
   "author": "czhmisaka",
   "main": "lib/markedPage.umd.js",    
   "module": "lib/markedPage.umd.js",  
-  "types": "dist/index.d.ts",      
+  "typings": "types/index.d.ts",
   "license": "MIT",    
   "files": [
     "lib"
@@ -14,7 +14,7 @@
     "serve": "vue-cli-service serve",
     "build": "NODE_ENV=prod && vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lib":"vue-cli-service build --target lib --name markedPage --dest lib packages/index.ts"
+    "build-bundle":"vue-cli-service build --target lib --name markedPage --dest lib packages/index.ts"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^0.2.4",

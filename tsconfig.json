@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
+    "declaration": true,
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
@@ -17,7 +18,7 @@
     ],
     "paths": {
       "@/*": [
-        "example/*"
+        "packages/*"
       ]
     },
     "lib": [
@@ -32,7 +33,10 @@
     "example/**/*.tsx",
     "example/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "tests/**/*.tsx",
+    "packages/**/*.ts",
+    "packages/**/*.tsx",
+    "packages/**/*.vue",
   ],
   "exclude": [
     "node_modules"
