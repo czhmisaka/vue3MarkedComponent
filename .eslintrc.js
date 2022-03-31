@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-12-30 11:00:24
  * @LastEditors: CZH
- * @LastEditTime: 2022-02-27 08:54:03
+ * @LastEditTime: 2022-03-31 15:58:10
  * @FilePath: /vue3MarkedComponent/.eslintrc.js
  */
 module.exports = {
@@ -25,6 +25,7 @@ module.exports = {
     "@typescript-eslint/explicit-module-boundary-types": "off",
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-empty-function': 'off'
+    '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/no-this-alias':'off'
   }
 }

@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-02-27 08:58:38
  * @LastEditors: CZH
- * @LastEditTime: 2022-03-31 15:27:27
+ * @LastEditTime: 2022-03-31 15:57:06
  * @FilePath: /vue3MarkedComponent/example/views/markDownPageList.vue
 -->
 <template>
@@ -19,7 +19,11 @@
         </el-menu-item>
       </el-menu>
     </div>
-    <markedPage :markdown="markdown[markdownIndex].doc" class="mark_body"></markedPage>
+    <markedPage
+      :markdown="markdown[markdownIndex].doc"
+      class="mark_body"
+      :style="'opacity:' + (visible ? 1 : 0)"
+    ></markedPage>
   </div>
 </template>
 
@@ -32,12 +36,18 @@ export default defineComponent({
     return {
       markdownIndex: 0,
       markdown: index.docList,
+      visible: true,
     };
   },
   methods: {
     async handleSelect(e: any) {
+      const that = this;
       if (typeof e == "number") {
-        this.markdownIndex = e;
+        this.visible = false;
+        setTimeout(() => {
+          that.visible = true;
+          that.markdownIndex = e;
+        }, 300);
       }
     },
   },
@@ -52,5 +62,6 @@ export default defineComponent({
 }
 .mark_body {
   height: calc(100vh - 60px);
+  transition: all 0.3s;
 }
 </style>

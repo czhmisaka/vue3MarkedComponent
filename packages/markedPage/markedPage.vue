@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-01-10 14:43:36
  * @LastEditors: CZH
- * @LastEditTime: 2022-03-31 15:37:56
+ * @LastEditTime: 2022-03-31 15:48:28
  * @FilePath: /vue3MarkedComponent/packages/markedPage/markedPage.vue
 -->
 <template>
@@ -15,7 +15,11 @@
           @node-click="nodeClick"
         ></el-tree>
       </el-aside>
-      <el-main class="container" id="markdown-body">
+      <el-main
+        class="container"
+        id="markdown-body"
+      
+      >
         <div class="markdown-body body">
           <div v-html="compileMarkdown"></div>
         </div>
