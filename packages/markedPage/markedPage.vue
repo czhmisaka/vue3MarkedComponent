@@ -1,12 +1,12 @@
 <!--
  * @Date: 2022-01-10 14:43:36
  * @LastEditors: CZH
- * @LastEditTime: 2022-02-27 17:06:24
- * @FilePath: /vue3MarkedComponent/packages/components/markedPage.vue
+ * @LastEditTime: 2022-03-31 15:37:56
+ * @FilePath: /vue3MarkedComponent/packages/markedPage/markedPage.vue
 -->
 <template>
   <div class="post">
-    <el-container style="height:100%">
+    <el-container style="height: 100%">
       <el-aside :trigger="null" collapsible class="aside">
         <el-tree
           class="tree"
@@ -108,7 +108,7 @@ export default {
       let tempArr = [];
       let index = 0;
         content.replace(/(#+)[^#][^\n]*?(?:\n)/g, function (match, m1) {
-          if (match.replace("\n", "").split("# ").length >= 2) {
+           if (match.replace("\n", "").split("# ").length >= 2 && content.split(match)[0].split('```').length%2==1) {
             let title = match.replace("\n", "").replace(/<\/?.+?>/gi, '');
             let level = m1.length;
             tempArr.push({

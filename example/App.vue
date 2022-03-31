@@ -1,8 +1,8 @@
 <!--
  * @Date: 2022-02-27 08:34:43
  * @LastEditors: CZH
- * @LastEditTime: 2022-02-27 09:44:28
- * @FilePath: /vue3MarkedComponent/src/App.vue
+ * @LastEditTime: 2022-03-31 12:47:24
+ * @FilePath: /vue3MarkedComponent/example/App.vue
 -->
 <template>
   <router-view class="wholeScreen" />
@@ -31,7 +31,7 @@
 </style>
 <style scoped>
 .wholeScreen{
-  width:90%;
-  height: 90%;
+  width:100vw;
+  height: 100vh;
 }
 </style>
