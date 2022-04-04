@@ -7,15 +7,7 @@
 <template>
   <div>
     <div class="header">
-      <div class="tabbed round">
-        <div class="tabbedBg"></div>
-        <ul>
-          <li v-for="(item, index) in tabNameList" :key="index" class="li">
-            {{ item }}
-          </li>
-        </ul>
-      </div>
-      <!-- <el-menu
+      <el-menu
         mode="horizontal"
         background-color="black"
         text-color="#ded"
@@ -25,7 +17,7 @@
         <el-menu-item v-for="(item, index) in markdown" :key="index" :index="index">
           <h3>{{ item.name }}</h3>
         </el-menu-item>
-      </el-menu> -->
+      </el-menu>
     </div>
     <markedPage
       :markdown="markdown[markdownIndex].doc"
@@ -74,100 +66,5 @@ export default defineComponent({
 .mark_body {
   height: calc(100vh - 60px);
   transition: all 0.3s;
-}
-
-/* Tabbed Styles */
-.tabbed {
-  width: 100%;
-  margin: 0 auto;
-  margin-bottom: 68px;
-  overflow: hidden;
-  transition: border 250ms ease;
-  height: 80px;
-  padding-top: 20px;
-}
-.tabbed .tabbedBg {
-  position: absolute;
-  top: 10px;
-  width: 90%;
-  height: 60px;
-  background: #ccc;
-  padding: 0px;
-  left: 20px;
-  border-radius: 8px 8px 0 0;
-}
-.tabbed ul {
-  margin: 0px;
-  padding: 0px;
-  overflow: hidden;
-  float: left;
-  padding-left: 48px;
-  list-style-type: none;
-}
-.tabbed ul * {
-  margin: 0px;
-  padding: 0px;
-}
-.tabbed ul .li {
-  display: block;
-  float: right;
-  padding: 10px 24px 8px;
-  background-color: #fff;
-  margin-right: 46px;
-  margin-left: 18px;
-  z-index: 2;
-  position: relative;
-  cursor: pointer;
-  color: #777;
-  transition: all 250ms ease;
-}
-.li:before,
-.li:after {
-  display: block;
-  content: " ";
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 44px;
-  background-color: #fff;
-  transition: all 250ms ease;
-}
-.li:before {
-  right: -24px;
-  transform: skew(30deg, 0deg);
-  box-shadow: rgba(0, 0, 0, 0.1) 3px 2px 5px, inset rgba(255, 255, 255, 0.09) -1px 0;
-  border-radius: 0 8px 0 0;
-}
-.li:after {
-  left: -24px;
-  transform: skew(-30deg, 0deg);
-  box-shadow: rgba(0, 0, 0, 0.1) -3px 2px 5px, inset rgba(255, 255, 255, 0.09) 1px 0;
-  border-radius: 8px 0 0 0;
-}
-.li {
-  border-radius: 8px 8px 0 0;
-}
-.tabbedBg:after,
-.tabbedBg:before {
-  display: block;
-  content: " ";
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 44px;
-  background-color: #ccc;
-  transition: all 250ms ease;
-}
-.tabbedBg:before {
-  right: -24px;
-  transform: skew(30deg, 0deg);
-  box-shadow: rgba(0, 0, 0, 0.1) 3px 2px 5px, inset rgba(255, 255, 255, 0.09) -1px 0;
-  border-radius: 0 8px 0 0;
-}
-.tabbedBg:after {
-  left: -24px;
-  transform: skew(-30deg, 0deg);
-  box-shadow: rgba(0, 0, 0, 0.1) -3px 2px 5px, inset rgba(255, 255, 255, 0.09) 1px 0;
-  border-radius: 8px 0 0 0;
 }
 </style>
