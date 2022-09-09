@@ -43,7 +43,6 @@ export default defineComponent({
   onShow() {},
   methods: {
     async handleSelect(e: any) {
-      console.log(this);
       const that = this;
       if (typeof e == "number") {
         this.visible = false;
