@@ -1,8 +1,8 @@
 <!--
  * @Date: 2021-12-30 11:00:24
  * @LastEditors: CZH
- * @LastEditTime: 2022-09-09 12:47:32
- * @FilePath: /vue3MarkedComponent/example/assets/configForDesktopPage.md
+ * @LastEditTime: 2022-09-18 11:00:37
+ * @FilePath: /configforpagedemo/README.md
 -->
 
 # configForDesktopPage
@@ -26,7 +26,7 @@
 </template>
 ```
 
-具体组件详情可参考
+具体组件载入数据的配置详情可参考
 
 ```Typescript
 const props = {
@@ -63,6 +63,187 @@ const props = {
       },
     },
   },
+```
+
+### CardApi
+
+通过封装对于onChange事件的操作，gridDesktop组件将会拥有更加广泛易用的组件操作能力
+
+#### setData
+
+功能描述：一个用于交互桌面组件BaseData数据的函数，本质是分装了gridDesktop的onChange操作，关于GridDesktop能响应的组件操作，可以参考 *组件-基座*
+
+```Typescript
+/**
+ * @name: setData
+ * @description: 简易组件数据推送到桌面baseData的工具
+ * @authors: CZH
+ * @Date: 2022-07-29 16:25:14
+ */
+export const setData = (content: {
+    [key: string]: any
+}, value: { [key: string]: any }): void => {
+    if (!checkContext(content, value)) return;
+    try {
+        let func = content['$emit'] ? '$emit' : 'emit';
+        content[func]('onChange', deepClone(value), {
+            type: [
+                cardOnChangeType.onChange
+            ]
+        })
+    } catch (err) {
+        console.error('setData_数据上报错误:', err, content, value);
+    }
+}
+```
+
+
+#### changeVisible
+
+功能描述：一个用于设置组件显影状态的函数，可以触发组件的fade in out 动画
+
+```TypeScript
+/**
+ * @name: changeVisible
+ * @description: 组件可视状态修改
+ * @authors: CZH
+ * @Date: 2022-08-17 20:07:07
+ * @param {object} content
+ * @param {object} value
+ */
+export const changeVisible = (content: { [key: string]: any }, value: { [key: string]: Boolean }) => {
+    if (!checkContext(content, value)) return;
+    try {
+        let func = content['$emit'] ? '$emit' : 'emit';
+        let data = {} as gridCellOptions;
+        Object.keys(value).map((name: string) => {
+            data[name] = {
+                options: { showInGridDesktop: value[name] }
+            }
+        })
+        content[func]('onChange', data, {
+            type: [
+                cardOnChangeType.cardConfigChange
+            ]
+        })
+    } catch (err) {
+        console.error('changeVisible 错误:', err, content, value);
+    }
+}
+```
+
+#### changeCardPosition
+功能描述：一个用于设置组件位置状态的函数，可以触发组件的位移动画
+
+```Typescript
+/**
+ * @name: changeCardPosition
+ * @description: 使用组件名称修改组件位置
+ * @authors: CZH
+ * @Date: 2022-08-17 21:01:15
+ * @param {object} content
+ * @param {object} value
+ */
+export const changeCardPosition = (content: { [key: string]: any }, value: { [key: string]: gridPositionCell }) => {
+    if (!checkContext(content, value)) return;
+    try {
+        let func = content['$emit'] ? '$emit' : 'emit';
+        let data = {} as gridCellOptions;
+        Object.keys(value).map((name: string) => {
+            data[name] = {
+                gridInfo: {
+                    default: {
+                        position: value[name]
+                    }
+                }
+            }
+        })
+        content[func]('onChange', data, {
+            type: [
+                cardOnChangeType.cardConfigChange
+            ]
+        })
+    } catch (err) {
+        console.error('changeVisible 错误:', err, content, value);
+    }
+}
+```
+
+
+#### changeCardSize
+功能描述：一个用于设置组件大小的函数，可以触发组件的变形动画
+
+
+```Typescript
+/**
+ * @name: changeCardSize
+ * @description: 使用组件名称修改组件Size
+ * @authors: CZH
+ * @Date: 2022-08-17 21:01:15
+ * @param {object} content
+ * @param {object} value
+ */
+export const changeCardSize = (content: { [key: string]: any }, value: { [key: string]: gridSizeCell }) => {
+    if (!checkContext(content, value)) return;
+    try {
+        let func = content['$emit'] ? '$emit' : 'emit';
+        let data = {} as gridCellOptions;
+        Object.keys(value).map((name: string) => {
+            data[name] = {
+                gridInfo: {
+                    default: {
+                        size: value[name]
+                    }
+                }
+            }
+        })
+        content[func]('onChange', data, {
+            type: [
+                cardOnChangeType.cardConfigChange
+            ]
+        })
+    } catch (err) {
+        console.error('changeVisible 错误:', err, content, value);
+    }
+}
+
+
+```
+
+
+#### changeCardProperties
+功能描述：用于修改组件props参数的函数，
+
+```Typescript
+/**
+ * @name: changeCardProperties
+ * @description: 修改组件配置参数
+ * @authors: CZH
+ * @Date: 2022-09-08 10:06:40
+ * @param {object} content
+ * @param {*} value
+ */
+export const changeCardProperties = (content: { [key: string]: any }, value: { [key: string]: any }) => {
+    if (!checkContext(content, value)) return;
+    try {
+        let func = content['$emit'] ? '$emit' : 'emit';
+        let data = {} as gridCellOptions;
+        Object.keys(value).map((name: string) => {
+            data[name] = {
+                options: {
+                    props: { ...value[name] }
+                },
+            }
+        })
+        content[func]('onChange', data, {
+            type: [
+                cardOnChangeType.cardConfigChange
+            ]
+        })
+    } catch (err) {
+        console.error('changeVisible 错误:', err, content, value);
+    }
+}
 ```
 
 ## 组件
@@ -204,7 +385,7 @@ export interface cardComponent {
 3. 单独存放一个Router编写当前组件的路由
 4. index.vue中可以通过加载不同的桌面配置文件来切换当前页面的功能
 
-<img src='https://raw.githubusercontent.com/czhmisaka/ConfigForDesktopPage/master/markDownImage/file.png'>
+<img src='./markDownImage/file.png'>
 
 **图片仅作为示范，并非本项目内容**
 
@@ -229,6 +410,7 @@ npm install
 ```
 
 #### Compiles and hot-reloads for development
+
 
 ```shell
 npm run dev
