@@ -1,8 +1,8 @@
 /*
  * @Date: 2022-01-14 10:56:17
  * @LastEditors: CZH
- * @LastEditTime: 2022-02-27 09:34:24
- * @FilePath: /vue3MarkedComponent/src/assets/index.ts
+ * @LastEditTime: 2022-10-12 11:00:00
+ * @FilePath: /vue3MarkedComponent/example/assets/index.ts
  */
 
 
@@ -19,7 +19,7 @@ const camelCase = function (str: string): string {
 // 这里规定了文件扫描的范围
 const requireModule = [require.context(
     './',
-    true,
+    true,   
     /\.md$/
 )]
 
